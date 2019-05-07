@@ -7,6 +7,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 
 /**
@@ -14,6 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * 
  *
  */
+@Data
+@NoArgsConstructor
 @XmlRootElement(name = "records")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RecordList {
@@ -23,17 +28,6 @@ public class RecordList {
 
 	public RecordList(List<Record> recordList) {
 		this.recordList = recordList;
-	}
-
-	public RecordList() {
-	}
-
-	public List<Record> getRecords() {
-		return recordList;
-	}
-
-	public void setRecords(List<Record> record) {
-		this.recordList = record;
 	}
 
 }

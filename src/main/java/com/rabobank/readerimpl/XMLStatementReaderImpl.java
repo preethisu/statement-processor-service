@@ -1,5 +1,7 @@
 package com.rabobank.readerimpl;
 
+import java.util.List;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.rabobank.readerfactory.StatementReader;
+import com.rabobank.readerrows.Record;
 import com.rabobank.readerrows.RecordList;
 
 /**
@@ -19,7 +22,7 @@ import com.rabobank.readerrows.RecordList;
  */
 @Component
 @Qualifier("xmlreader")
-public class XMLStatementReaderImpl implements StatementReader<RecordList> {
+public class XMLStatementReaderImpl implements StatementReader {
 	private static final Logger logger = LoggerFactory.getLogger(XMLStatementReaderImpl.class);
 
 	/*
@@ -32,18 +35,20 @@ public class XMLStatementReaderImpl implements StatementReader<RecordList> {
 	 * this take xml file as input and parse it .
 	 */
 	@Override
-	public RecordList readStatement(MultipartFile file) {
-		RecordList statments = null;
+	public List<Record> readStatement(MultipartFile file) {
+		RecordList records = new RecordList();
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(RecordList.class);
 			Unmarshaller unmarshallerObj = jaxbContext.createUnmarshaller();
-			statments = (RecordList) unmarshallerObj.unmarshal(file.getInputStream());
+			records = (RecordList) unmarshallerObj.unmarshal(file.getInputStream());
+			return records.getRecordList();
+
 		} catch (JAXBException e) {
 			logger.error("JAXBException While reading the statement from XML", e);
 		} catch (Exception e) {
 			logger.error("Exception While reading the statement from XML", e);
 		}
-		return statments;
+		return null;
 
 	}
 

@@ -1,6 +1,7 @@
 package com.rabobank.readerrows;
 
 import java.math.BigDecimal;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -8,10 +9,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.opencsv.bean.CsvBindByName;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author Preethi
  *
  */
+@Data
+@NoArgsConstructor
 @XmlRootElement(name = "record")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Record {
@@ -46,81 +52,6 @@ public class Record {
 		this.isValidEndBalance = false;
 		this.isUniqueStatement = false;
 
-	}
-
-	public Record() {
-	}
-
-	public Long getReference() {
-		return reference;
-	}
-
-	public void setReference(Long reference) {
-		this.reference = reference;
-	}
-
-	public String getAccountNumber() {
-		return accountNumber;
-	}
-
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
-	public BigDecimal getStartBalance() {
-		return startBalance;
-	}
-
-	public void setStartBalance(BigDecimal startBalance) {
-		this.startBalance = startBalance;
-	}
-
-	public BigDecimal getMutation() {
-		return mutation;
-	}
-
-	public void setMutation(BigDecimal mutation) {
-		this.mutation = mutation;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public BigDecimal getEndBalance() {
-		return endBalance;
-	}
-
-	public void setEndBalance(BigDecimal endBalance) {
-		this.endBalance = endBalance;
-	}
-
-	public boolean getIsValidEndBalance() {
-		return isValidEndBalance;
-	}
-
-	public void setIsValidEndBalance(boolean isValidEndBalance) {
-		this.isValidEndBalance = isValidEndBalance;
-	}
-
-	public boolean getIsUniqueStatement() {
-		return isUniqueStatement;
-	}
-
-	public void setIsUniqueStatement(boolean isUniqueStatement) {
-		this.isUniqueStatement = isUniqueStatement;
-	}
-
-	@Override
-	public String toString() {
-		return "CustomerStatements [reference=" + reference + ", accountNumber=" + accountNumber + ", start_Balance="
-				+ startBalance + ", mutation=" + mutation + ", description=" + description + ", end_Balance="
-				+ endBalance + ", isValidEndBalance=" + isValidEndBalance + ", isUniqueStatement=" + isUniqueStatement
-				+ "]";
 	}
 
 }

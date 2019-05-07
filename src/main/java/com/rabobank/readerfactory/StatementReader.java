@@ -1,6 +1,10 @@
 package com.rabobank.readerfactory;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
+
+import com.rabobank.readerrows.Record;
 
 /**
  * @author Preethi
@@ -8,6 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface StatementReader<T> {
 
-	T readStatement(MultipartFile file);
+	List<Record> readStatement(MultipartFile file);
 
 }
